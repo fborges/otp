@@ -1,16 +1,11 @@
 pipeline {
-    agent { label 'dockerserver' }
+    agent { 
+        docker { image 'node:14-alpine' }
+     }
     stages { 
         stage('build') {
-            agent {
-                docker {
-                // Set both label and image
-                    label 'dockerserver'
-                    image 'golang'
-                 }
-            }
             steps {
-                sh 'go version'
+                sh 'node version'
             }
         }
     }
